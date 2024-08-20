@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 th:text="${question.subject}"></h1>
+    <div>
+        <p th:text="${question.content}"></p>
+    </div>
+
+    <h3>답변 목록</h3>
+    <div>
+        <ul>
+            <li th:each="a : ${question.answerList}" th:text="${a.content}"></li>
+
+        </ul>
+    </div>
+    <form th:action="@{|/answer/create/${question.id}|}" method="post">
+        <textarea name="content" id="content" rows="15"></textarea>
+        <input type="submit" value="답변등록">
+    </form>
+</body>
+</html>
